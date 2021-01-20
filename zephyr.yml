@@ -45,21 +45,13 @@ on_project_first_start: nvm install && yarn && yarn lerna:bootstrap
 # attach: false
 
 windows:
-  - editor:
-      layout: main-vertical
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      panes:
-        - nvim
   - mock-servers:
       layout: main-vertical
       panes:
         - e2e-nvim:
-          - cd packages/e2e-ets
-          - nvim .
+          - cd packages/e2e-renderer
         - ets:
-          - GRAPHQL_API_URL=http://localhost:4000 OXYGEN_API_URL=http://localhost:5000/page?url= yarn workspace eurosport-toolkit-server next:dev:hmr
+          - GRAPHQL_API_URL=http://localhost:4000 OXYGEN_API_URL=http://localhost:5000/page?url= yarn workspace @eurosportdigital/renderer next:dev:hmr
         - oxygen:
           - yarn workspace @eurosport/oxygen-mock-server start
         - graphql:
